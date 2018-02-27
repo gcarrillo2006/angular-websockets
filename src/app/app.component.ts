@@ -15,22 +15,21 @@ import { Entity } from '../object/entity';
 export class AppComponent implements OnInit {
   title = 'app';
 
-  private entityList: Entity[];
+  private entityListWS: Entity[] = []; // Inicialization is required otherwise the websocket is going to throw undefined
 
-  private entityArray: Entity[];
+  private entityListRest: Entity[];
 
   constructor(private entityService: EntityService) {
     entityService.entitySocket.subscribe(entity => {
-      this.entityList.push(entity);
+      this.entityListWS.push(entity);
     });
   }
 
   ngOnInit() {
-    this.getEntityList(); // Load the entityList inmediately
+    this.getEntityListRest(); // Load the entityArray inmediately
   }
 
-  getEntityList(): void {
-    this.entityService.getEntityList().then(entityArray => this.entityList = entityArray);
-    console.log(this.entityArray);
+  getEntityListRest(): void {
+    this.entityService.getEntityList().then(array => this.entityListRest = array);
   }
 }

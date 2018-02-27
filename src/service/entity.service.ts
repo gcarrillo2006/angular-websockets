@@ -44,17 +44,6 @@ export class EntityService {
         .catch(this.handleError);
   }
 
-  getEntity(id: number): Promise<Entity> {
-    return this.getEntityList().then(entityList => entityList.find(entity => entity.id === id));
-  }
-
-  update(entity: Entity): Promise<Entity> {
-    const url = `${this.entityUrl}/${entity.id}`;
-    return this.http.put(url, JSON.stringify(entity), {headers: this.headers}).toPromise()
-            .then(() => entity)
-            .catch(this.handleError);
-  }
-
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
