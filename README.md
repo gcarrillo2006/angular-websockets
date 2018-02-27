@@ -1,4 +1,7 @@
-# AngularWebsockets
+# Angular Websockets
+
+This project contains an example how to integrate websockets calls using angular and json.
+The backend of the project could be found in the Java EE7 Websockets example.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.0.
 
